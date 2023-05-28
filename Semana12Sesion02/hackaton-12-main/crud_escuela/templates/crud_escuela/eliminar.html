@@ -1,0 +1,8 @@
+{% extends 'index.html'%}
+{% block content %}
+<h1>Estas seguro de eliminar {{obj}}</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Send"/>
+</form>
+{% endblock content%}

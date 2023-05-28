@@ -1,0 +1,7 @@
+{% extends 'index.html'%}
+{% block content %}
+<h1>Detalle para el curso de {{curso.nombre}}:</h1>
+    <!-- <h1>{{curso.id}}---------<a href="detalle_curso/{{curso.id}}">{{curso.nombre}}</a></h1> -->
+    <h1>{{curso.id}}---------{{curso.nombre}}</h1>
+    <p>{{curso.descripcion}}</p>
+{% endblock content%}
