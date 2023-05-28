@@ -1,0 +1,22 @@
+{% extends 'index.html'%}
+{% block content %}
+<h1>Pachaqtec</h1>
+<br>
+<p>Revisa nuestros cursos disponibles:</p>
+
+<div class="row">
+    {% for course in courses %}
+    <div class="col-sm-3 mb-3">
+        <div class="card w-80 text-center" >
+            <div class="card-body">
+                <br>
+                <h3 class="card-title">{{course.name}}</h3>
+                <br>
+                <a href="{% url 'course_detail' course.id %}" class="btn btn-primary btn-lg">Ver</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<br>
+</div>
+{% endblock content%}
