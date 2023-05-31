@@ -1,0 +1,31 @@
+{% extends "base_template.html" %}
+
+{% block title %}Product{% endblock %}
+
+{% block content %}
+<h1>Vista Ventas:</h1>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Fecha Venta</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Precio Unitario</th>
+            <th scope="col">SubTotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ venta.fechaVenta}}</td>
+            <td>{{ venta.nombre }}</td>
+            <td>{{ venta.categoria }}</td>
+            <td>{{ venta.stock }} unid.</td>
+            <td>s/ {{ venta.precioUnitario }}</td>
+            <td>s/ {{ venta.subTotal }}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+{% endblock %}

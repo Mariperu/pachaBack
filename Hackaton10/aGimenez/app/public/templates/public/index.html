@@ -1,0 +1,17 @@
+{% extends "base_template.html" %}
+
+{% block title %} Hackaton 10 {% endblock %}
+
+{% block content %}
+    {% if current_user.is_anonymous %}
+        <h4>Loggeate para ver las opciones</h4>
+    {% else %}
+        <h4>Menu Productos</h4>
+        <a href="/product/">Cargar</a><br>
+        <a href="/products/">Ver </a>
+        <br><br>
+        <h4>Menu Ventas</h4>
+        <a href="/venta/">Cargar</a><br>
+        <a href="/ventas/">Ver</a>
+    {% endif %}
+{% endblock %}

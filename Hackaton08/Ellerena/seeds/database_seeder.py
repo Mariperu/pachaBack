@@ -1,7 +1,8 @@
 from orator.seeds import Seeder
+from .salons_table_seeder import SalonsTableSeeder
 from .alumnos_table_seeder import AlumnosTableSeeder
-from .profesores_table_seeder import ProfesoresTableSeeder
-
+from .docentes_table_seeder import DocentesTableSeeder
+from .cursos_table_seeder import CursosTableSeeder
 
 class DatabaseSeeder(Seeder):
 
@@ -9,6 +10,8 @@ class DatabaseSeeder(Seeder):
         """
         Run the database seeds.
         """
+        self.call(SalonsTableSeeder)
         self.call(AlumnosTableSeeder)
-        self.call(ProfesoresTableSeeder)
+        self.call(DocentesTableSeeder)
+        self.call(CursosTableSeeder)
 

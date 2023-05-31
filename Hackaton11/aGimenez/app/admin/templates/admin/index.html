@@ -1,0 +1,13 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    MiniMarket | Admin
+{% endblock %}
+
+{% block content %}
+    <ul>
+        <li><a href="{{ url_for('admin.list_products') }}">Productos</a></li>
+        <li><a href="{{ url_for('admin.list_facturas') }}">Facturas</a></li>
+        <li><a href="{{ url_for('admin.list_users') }}">Usuarios</a></li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+# orator.yml
+databases:
+  default: postgres
+  postgres:
+    driver: postgres
+    host: localhost
+    database: market
+    user: patron
+    password: Papa1234
+    prefix: ''
+
+migrations:
+  path: migrations

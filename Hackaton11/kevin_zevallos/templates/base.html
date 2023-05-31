@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Hackaton 11 {% endblock %} - Minimarket</title>
+    <style>
+        .message {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f3f3f3
+        }
+        nav a {
+            color: #1fb900d0;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Minimarket</a>
+        {% if rol == 'administrador' %}
+        <a href="{{ url_for('getRegistros',id=id)}}">ver productos</a>
+        <a href="{{ url_for('getVentas',id=id)}}">ver ventas</a>
+        {% endif %}
+        {% if rol == 'almacen' %}
+        <a href="{{ url_for('createProduct',id=id)}}">crear producto</a>
+        <a href="{{ url_for('updateProduct',id=id)}}">actualizar producto</a>
+        {% endif %}
+        {% if rol == 'cajero' %}
+        <a href="{{ url_for('createCompra',id=id)}}">generar venta</a>
+        {% endif %}
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} 
+        <p>Actualmente tienes el rol de {{rol}}</p>
+        {% endblock %}
+    </div>
+</body>
+</html>

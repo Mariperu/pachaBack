@@ -1,0 +1,49 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+    <br><br><br>
+    <div class="d-flex justify-content-center">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.fecha.label }}
+                {{ form.fecha }}<br>
+                {% for error in form.fecha.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ form.cliente_id.label }}
+                {{ form.cliente_id }}<br>
+                {% for error in form.cliente_id.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ form.producto_id.label }}
+                {{ form.producto_id }}<br>
+                {% for error in form.producto_id.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ form.Cantidad.label }}
+                {{ form.Cantidad }}<br>
+                {% for error in form.Cantidad.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ form.MontoTotal.label }}
+                {{ form.MontoTotal }}<br>
+                {% for error in form.MontoTotal.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <br>
+            <div>
+                {{ form.submit() }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

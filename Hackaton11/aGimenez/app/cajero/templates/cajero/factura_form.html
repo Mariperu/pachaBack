@@ -1,0 +1,127 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {% if form.numero_factura.data %}
+        {{ form.numero_factura.data }}
+    {% else %}
+        Nueva factura
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <script>
+        $(document).ready(function() {
+            var productoCount = 1;
+
+            // Agregar un nuevo campo de producto
+            $('#agregar-producto').click(function(e) {
+                e.preventDefault();
+                var productoHtml = `
+                    <div class="producto">
+                        <hr>
+                        <h3>Producto ${productoCount}</h3>
+                        <div>
+                            <label for="detalles-${productoCount}-nombre">Nombre:</label>
+                            <input type="text" id="detalles-${productoCount}-nombre" name="detalles-${productoCount}-nombre">
+                            <button class="buscar-producto" data-producto="${productoCount}">Buscar</button>
+                        </div>
+                        <div>
+                            <label for="detalles-${productoCount}-precio">Precio Unitario:</label>
+                            <input type="number" step="0.01" id="detalles-${productoCount}-precio" name="detalles-${productoCount}-precio" readonly>
+                        </div>
+                        <div>
+                            <label for="detalles-${productoCount}-cantProducto">Cantidad:</label>
+                            <input type="number" id="detalles-${productoCount}-cantProducto" name="detalles-${productoCount}-cantProducto">
+                        </div>
+                    </div>
+                `;
+                $('#productos-container').append(productoHtml);
+                productoCount++;
+            });
+
+            // Buscar producto al hacer clic en el botón "Buscar"
+            $(document).on('click', '.buscar-producto', function(e) {
+                e.preventDefault();
+                var productoIndex = $(this).data('producto');
+                var nombre = $('#detalles-' + productoIndex + '-nombre').val();
+
+                // Realizar la lógica de búsqueda del producto y obtener el precio unitario
+                // Puedes hacer una solicitud AJAX al servidor para buscar el producto en la base de datos
+                $.ajax({
+                        url: '/cajero/buscar_producto',
+                        method: 'POST',
+                        data: {
+                        nombre: nombre
+                        },
+                        success: function(response) {
+                           if (response.precio) {
+                                $('#detalles-' + productoIndex + '-precio').val(response.precio);
+                            } else {
+                                alert('Producto no encontrado');
+                            }
+                         },
+                        error: function() {
+                    alert('Error en la consulta del producto');
+                }
+            });
+
+                // Ejemplo de actualización del campo de precio unitario
+                var precioUnitario = 0.0; // Obtener el precio unitario del producto desde la base de datos o cualquier otra fuente
+                $('#detalles-' + productoIndex + '-precio').val(precioUnitario);
+            });
+        });
+    </script>
+
+    <form action="" method="post" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.numero_factura.label }} {{ form.numero_factura }}
+            {% for error in form.numero_factura.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.cliente.label }} {{ form.cliente }}
+
+        </div>
+        <hr>
+        <h3>Detalles de Productos</h3>
+        <div id="productos-container">
+            <div class="producto">
+                <h3>Producto 1</h3>
+                <div>
+                    {{ form.detalles.0.nombre.label }} {{ form.detalles.0.nombre }}
+                    <button class="buscar-producto" data-producto="0">Buscar</button>
+                    {% for error in form.detalles.0.nombre.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.detalles.0.precio.label }} {{ form.detalles.0.precio }}
+                    {% for error in form.detalles.0.precio.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.detalles.0.cantProducto.label }} {{ form.detalles.0.cantProducto }}
+                    {% for error in form.detalles.0.cantProducto.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        <button id="agregar-producto">Agregar Producto</button>
+        <hr>
+
+        <div>
+            {{ form.submit }}
+        </div>
+    </form>
+
+    {% if product %}
+    <form action="{{ url_for('cajero.delete_factura', numero_factura=factura.numero_factura) }}" method="post" novalidate>
+        <input type="submit" value="Eliminar" />
+    </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for("static", filename="base.css") }}">
+</head>
+<body>
+<div>
+    <ul class="user-info">
+        <li><a href="{{ url_for('public.index') }}">Inicio</a></li>
+        {% if current_user.is_anonymous %}
+            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            <li> | </li>
+            <li><a href="{{ url_for('auth.show_signup_form') }}">Registrar</a></li>
+        {% else %}
+            {% if current_user.is_admin %}
+                <li> | </li>
+                <li><a href="{{ url_for('admin.index') }}">Admin</a></li>
+                <li><a href="{{ url_for('rol.rol_form') }}">Rol</a></li>
+            {% endif %}
+            {% if current_user.role_id == 1 %}
+                <li> | </li>
+                <li><a href="{{ url_for('producto.productos_all') }}">Productos</a></li>
+                <li><a href="{{ url_for('factura.factura_all') }}">Ventas</a></li>
+            {% endif %}
+            {% if current_user.role_id == 2 %}
+                <li> | </li>
+                <li><a href="{{ url_for('factura.factura_form') }}">Boleta/Factura</a></li>
+                <li><a href="{{ url_for('cliente.cliente_form') }}">Cliente</a></li>
+            {% endif %}
+            {% if current_user.role_id == 3 %}
+                <li> | </li>
+                <li><a href="{{ url_for('categoria.categoria_form') }}">Categorias</a></li>
+                <li><a href="{{ url_for('producto.productos_form') }}">Productos</a></li>
+            {% endif %}
+            <li> | </li>
+            <li>{{ current_user.name }}</li>
+            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+        {% endif %}
+    </ul>
+</div>
+{% block content %}{% endblock %}
+</body>
+</html>

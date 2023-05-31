@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <title>Página de Almacen</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Eliminar Producto</h1>
+        <p>¿Estás seguro de que quieres eliminar el producto {{ producto.nombre }}?</p>
+        <form method="POST">
+            <input type="hidden" name="producto_id" value="{{ producto.id }}">
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{{ url_for('almacen') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+    
+</body>
+
+</html>

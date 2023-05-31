@@ -1,0 +1,12 @@
+
+    <h2>Matricular Estudiante en {{ curso.nombre }}</h2>
+    <form method="POST" action="{% url 'do_matriculacion' curso.id 1 %}">
+        {% csrf_token %}
+        <label for="studentSelect">Selecciona un estudiante:</label>
+        <select name="estudiante" id="studentSelect">
+            {% for estudiante in estudiantes %}
+                <option value="{{ estudiante.id }}">{{ estudiante.user.username }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Matricular">
+    </form>

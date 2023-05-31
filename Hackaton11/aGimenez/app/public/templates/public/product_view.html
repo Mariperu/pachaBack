@@ -1,0 +1,17 @@
+{% extends "base_template.html" %}
+
+{% block title %}{{ product.nombre }}{% endblock %}
+
+{% block content %}
+
+    {% if current_user.is_authenticated %}
+    <div>
+        <h3>{{ product.nombre }}</h3>
+
+        <h4>Stock {{ product.stock }}</h4>
+        <h4>Precio ${{ product.precio }}</h4>
+
+    </div>
+    {% endif %}
+
+{% endblock %}

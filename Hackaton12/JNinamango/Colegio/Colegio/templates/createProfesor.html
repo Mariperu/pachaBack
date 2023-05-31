@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+titulo
+{% endblock %}
+
+{% block body %}
+
+    <h1>Creacion de profesor</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="number" name="edad" placeholder="Edad">
+        <input type="text" name="correo" placeholder="Correo">
+        <select id="curso" name="curso">
+            {% for curso in cursos %}
+                <option value="{{ curso.id }}">{{ curso.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        
+
+        <input type="submit" value="Contratar">
+    </form>
+{% endblock%}

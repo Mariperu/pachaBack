@@ -1,0 +1,11 @@
+{% extends "baseForm.html" %}
+{% block titulo_pagina %} Agregar Matricula {% endblock %}titulo
+
+{% block principal %}
+
+            {{ form.nroMatricula.label }} {{ form.nroMatricula }}<br>
+            {{ form.periodoLectivo.label }} {{ form.periodoLectivo }}<br>
+            {{ form.identifAlumno.label }} {{ form.identifAlumno }}<br>
+
+
+{% endblock %}

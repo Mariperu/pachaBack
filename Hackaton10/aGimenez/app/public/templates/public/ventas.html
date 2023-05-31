@@ -1,0 +1,30 @@
+{% extends "base_template.html" %}
+
+{% block title %}Hackaton 10{% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Fecha Venta</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Precio Unitario</th>
+            <th scope="col">SubTotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for product in products %}
+            <td>{{ product.nombre }}</td>
+            <td>{{ product.categoria }}</td>
+            <td>{{ product.stock }} unid.</td>
+            <td>s/ {{ product.precioUnitario }}</td>
+            <td>s/ {{ product.subTotal }}</td>
+            -----------------------------------------<br>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

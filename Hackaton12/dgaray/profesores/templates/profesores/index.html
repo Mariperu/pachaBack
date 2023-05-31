@@ -1,0 +1,9 @@
+{% if latest_cursos_list %}
+    <ul>
+    {% for qcurso in latest_cursos_list %}
+    <li><a href="{% url 'profesores:detail' cursos.id %}">{{ cursos.cursos_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay cursos disponibles.</p>
+{% endif %}

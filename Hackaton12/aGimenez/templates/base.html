@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %} {%  endblock %}</title>
+    <link rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="">
+</head>
+
+<body>
+    <h3>{% block titulo_principal %} {% endblock %}</h3>
+    <h3>{% block titulo_secundaro %} {% endblock %}</h3>
+    {% block principal %} {% endblock %}
+
+
+</body>
+</html>

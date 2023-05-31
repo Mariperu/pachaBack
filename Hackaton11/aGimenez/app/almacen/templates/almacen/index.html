@@ -1,0 +1,13 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    MiniMarket | Almacen
+{% endblock %}
+
+
+{% block content %}
+
+    <ul>
+        <li><a href="{{ url_for('almacen.list_products') }}">Productos</a></li>
+    </ul>
+{% endblock %}

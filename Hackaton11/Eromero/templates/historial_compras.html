@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <title>Historial de Compras</title>
+</head>
+<body>
+  <!-- Resto del código... -->
+  
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="mt-5">Historial de Compras</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID de Factura</th>
+              <th scope="col">ID de Producto</th>
+              <th scope="col">ID de Usuario</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Total</th>
+              <th scope="col">Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for factura in facturas %}
+            <tr>
+              <th scope="row">{{ factura.id }}</th>
+              <td>{{ factura.producto_id }}</td>
+                <td>{{ factura.usuario_id }}</td>
+              <td>{{ factura.cantidad }}</td>
+              <td>{{ factura.total }}</td>
+              <td>{{ factura.created_at }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

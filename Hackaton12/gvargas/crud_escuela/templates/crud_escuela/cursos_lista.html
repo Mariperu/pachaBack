@@ -1,0 +1,14 @@
+{% extends 'index.html'%}
+{% block content %}
+<h1>la lista de cursos disponibles en ISIL:</h1>
+{% for curso in cursos %}
+    <h1>
+        {{curso.id}}---------
+        <a href="{% url 'detalle_curso' curso.id %}">
+            {{curso.nombre}}
+        </a>
+    </h1>
+    <a href="{% url 'actualizar_curso' curso.id %}">Actualizar</a>
+    <a href="{% url 'eliminar_curso' curso.id %}">Eliminar</a>
+{% endfor %}
+{% endblock content%}

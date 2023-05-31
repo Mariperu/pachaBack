@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <title>Página de Administración</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{ url_for('home') }}">Inicio</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">Cerrar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <h1 class="mt-5">Factura</h1>
+      <p>ID del Producto: {{ factura.producto_id }}</p>
+      <p>Cantidad: {{ factura.cantidad }}</p>
+      <p>Total: {{ factura.total }}</p>
+    </div>
+
+    <!-- Boton para volver a la pagina de ventas -->
+    <div class="container">
+      <div class="mt-4">
+          <a class="btn btn-primary" href="{{ url_for('seleccionar_producto') }}">Volver</a>
+      </div>
+  </body>
+  
+</html>

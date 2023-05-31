@@ -1,0 +1,20 @@
+{% extends "base_template.html" %}
+
+{% block title %}Tutorial Flask: MiniMarket{% endblock %}
+
+{% block content %}
+    <h2> Bienvenido al MiniMarket {{ current_user.name }}</h2>
+    <h3> Historial de Compras </h3>
+    <h4>Listado de Facturas</h4>
+    <ul>
+    {% for factura in facturas %}
+        <li>
+            <a href="{{ url_for('admin.show_factura', slug=factura.numero_factura) }}">
+            Nro Factura: {{ factura.numero_factura }}
+            Cliente: {{factura.cliente}}
+            Total: ${{factura.total}}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

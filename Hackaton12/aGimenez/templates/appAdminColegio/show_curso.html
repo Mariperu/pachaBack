@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titulo %} Administracion del Colegio {% endblock %}
+{% block titulo_principal %} Salones: {% endblock %}
+
+{% block principal %}
+
+{% for curso in cursos%}
+            Curso: {{curso.nombre}}, Salon: {{curso.salon}}<br>
+
+            {% for profesor in profesores%}
+                {% if profesor.curso_id.nombre == curso.nombre %}
+                    Profesor a Cargo: {{profesor.nombre}}, Identificador: {{profesor.identifProfesor}}<br>
+                {%endif%}
+            {% endfor %}
+
+            {% for alumno in alumnos %}
+                {% if alumno.curso_id.nombre == curso.nombre %}
+                    Alumno: {{alumno.nombre}}, Identificador: {{alumno.identifAlumno}}<br>
+                {%endif%}
+            {% endfor %}
+        ------------------------------------------------------------------------<br>
+        {% endfor %}
+<br><br><br><br>
+    <a href="{% url 'index' %}"> Volver Inicio</a>
+{% endblock %}

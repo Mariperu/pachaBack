@@ -1,0 +1,40 @@
+{% extends "base_template.html" %}
+
+{% block title %}Tutorial Flask: MiniMarket{% endblock %}
+
+{% block content %}
+
+    {% if current_user.is_anonymous %}
+        <h2> Bienvenido al Mini Market</h2>
+        Si sos un nuevo usuario, <a href="{{ url_for('auth.show_signup_form') }}">Registrate!</a><br>
+        Si ya tenes una cuenta con nosotros, <a href="{{ url_for('auth.login') }}">Loggeate!</a>
+    {% else %}
+            <ul>
+            {% for product in product_pagination.items %}
+                <li>
+                    <a href="{{ url_for('public.show_product', slug=product.nombre) }}">
+                    {{ product.nombre }}
+                    </a>
+                </li>
+            {% else %}
+                <li>No hay entradas</li>
+            {% endfor %}
+            </ul>
+
+        <div class=pagination>
+            {%- for page in product_pagination.iter_pages() %}
+                {% if page %}
+                    {% if page != product_pagination.page %}
+                        <a href="{{ url_for('public.index', page=page) }}">{{ page }}</a>
+                    {% else %}
+                        <strong>{{ page }}</strong>
+                    {% endif %}
+                {% else %}
+                    <span class=ellipsis>…</span>
+                {% endif %}
+            {%- endfor %}
+        </div>
+
+    {% endif %}
+
+{% endblock %}

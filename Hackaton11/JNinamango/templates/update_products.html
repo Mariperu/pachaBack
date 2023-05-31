@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Producto</title>
+</head>
+<body>
+
+    <h1>Editar Producto</h1>
+    <form method="POST" action="/almacen/comprarProducts/">
+        <label >Nombre:</label>
+        <input type="text" name="nombre" value="{{producto.nombre}}"><br>
+
+        <label >Precio:</label>
+        <input type="number" name="precio" value="{{producto.precio}}"><br>
+
+        <label >Stock:</label>
+        <input type="number" name="stock" value="{{producto.stock}}"><br>
+
+        <button type="submit">Comprar</button>
+    </form>
+</body>
+</html>

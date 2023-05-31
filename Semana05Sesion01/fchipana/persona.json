@@ -1,0 +1,18 @@
+{
+    "Nombre":"Roberto",
+    "Apellido":"Pineda",
+    "Edad":39.5,
+    "Raza":"Mestizo",
+    "Sexo":"Masculino",
+    "Aficiones":["Plastimodelismo", "Tocar Guitarra", "Tocar el Bajo"],
+    "Hijos":[
+        {
+            "Nombre":"Pancho",
+            "Edad":1.2
+        },
+        {
+            "Nombre":"Selina Kyle",
+            "Edad":2.5
+        }
+    ]
+}

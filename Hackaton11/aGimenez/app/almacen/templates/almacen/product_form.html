@@ -1,0 +1,44 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {% if form.nombre.data %}
+        {{ form.nombre.data }}
+    {% else %}
+        Nueva entrada
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.nombre.label }}
+            {{ form.nombre }}<br>
+            {% for error in form.nombre.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.stock.label }}
+            {{ form.stock }}<br>
+            {% for error in form.stock.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.precio.label }}
+            {{ form.precio }}<br>
+            {% for error in form.precio.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+    {% if product %}
+    <form action="{{ url_for('almacen.delete_product', product_id=product.id) }}" method="post" novalidate>
+        <input type="submit" value="Eliminar" />
+    </form>
+    {% endif %}
+{% endblock %}

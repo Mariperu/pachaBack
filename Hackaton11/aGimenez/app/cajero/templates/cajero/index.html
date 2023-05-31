@@ -1,0 +1,12 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    MiniMarket | Cajero
+{% endblock %}
+
+{% block content %}
+
+    <ul>
+        <li><a href="{{ url_for('cajero.list_facturas') }}">Facturas</a></li>
+    </ul>
+{% endblock %}

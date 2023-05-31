@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <title>Página de Administración</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Productos</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.id }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.categoria }}</td>
+                    <td>{{ producto.stock }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>
+                        <a href="{{ url_for('modificar_producto', producto_id=producto.id) }}" class="btn btn-primary">Modificar</a>
+                        <form action="{{ url_for('eliminar_producto', producto_id=producto.id) }}" method="POST">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="mb-3">
+            <a href="{{ url_for('almacen') }}" class="btn btn-primary">Volver</a>
+        </div>
+    </div>
+    
+</body>
+
+</html>

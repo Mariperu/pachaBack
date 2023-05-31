@@ -31,5 +31,10 @@ def get_alumnos():
     alumnos = Alumno.all()
     return jsonify(alumnos)
 
+@app.route('/profesores', methods=['GET'])
+def profesores():
+    alumnos = profesores.all()
+    return jsonify(profesores)
+
 if __name__ == '__main__':
     app.run()

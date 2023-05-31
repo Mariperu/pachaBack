@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo_pagina %} {%  endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" novalidate="">
+            {% csrf_token %}
+            <div class="col-sm-3 maincontent">
+                {% block principal %} {% endblock %}
+                <input type="submit" name="Grabar" value="Grabar" class="btn btn-dark">
+            </div>
+        </form>
+        <br><br><br>
+    <a href="{% url 'index' %}"> Volver Inicio</a>
+    </div>
+</body>
+</html>

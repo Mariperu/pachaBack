@@ -345,8 +345,8 @@ class Menu:
 
     def limpiarPantalla(self):
         def clear():
-               #return os.system('cls')
-           return os.system('clear')
+            return os.system('cls')
+           #return os.system('clear')
         clear()   
         
         # os.system('cls')

@@ -1,0 +1,61 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {% if form.nombre.data %}
+        {{ form.nombre.data }}
+    {% else %}
+        Nueva Venta
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.fechaVenta.label }}
+            {{ form.fechaVenta }}<br>
+            {% for error in form.fechaVenta.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.nombre.label }}
+            {{ form.nombre(size=128) }}<br>
+            {% for error in form.nombre.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.categoria.label }}
+            {{ form.categoria(size=25) }}<br>
+            {% for error in form.categoria.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.stock.label }}
+            {{ form.stock }}<br>
+            {% for error in form.stock.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.precioUnitario.label }}
+            {{ form.precioUnitario }}<br>
+            {% for error in form.precioUnitario.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.subTotal.label }}
+            {{ form.subTotal }}<br>
+            {% for error in form.subTotal.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+               
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

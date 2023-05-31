@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+titulo
+{% endblock %}
+
+{% block body %}
+    <h1>SALONES:</h1>
+    {% for curso in cursos%}
+            <p>CURSO: {{curso.nombre}}</p>
+
+            {% for profesor in profesores%}
+                {% if profesor.curso.id == curso.id %}
+                    <p>PROFESOR: {{profesor.nombre}}</p>
+                {%endif%}
+            {% endfor %}
+
+            {% for alumno in alumnos %}
+                {% if alumno.curso.id == curso.id %}
+                    <p>ALUMNO {{alumno.id}}: {{alumno.nombre}}</p>
+                {%endif%}
+
+            {% endfor %}
+
+
+        <p>------------------------------------</p>
+    {% endfor %}
+{% endblock%}

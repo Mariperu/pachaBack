@@ -1,0 +1,27 @@
+{% extends "base_template.html" %}
+
+{% block title %}{{ factura.numero_factura }}{% endblock %}
+
+{% block content %}
+    <h3> Nro. Factura {{ factura.numero_factura }}</h3>
+    <div>
+        <span class="blogDate">{{ factura.created|datetime('full') }}</span>
+        <h4> Cliente: {{ factura.cliente }}</h4>
+
+    </div>
+    <div>
+    <ul>
+        <h4> Lista de Productos </h4>
+    {% for detalle in factura.detalles %}
+        <li>
+            Nombre: {{ detalle.nombre }}
+            Precio: ${{ detalle.precio}}
+            Cantidad: {{ detalle.cantProducto}}
+            Subtotal: ${{ detalle.subtotal }}
+        </li>
+    {% endfor %}
+    </ul>
+        Total : ${{ factura.total }}
+    </div>
+
+{% endblock %}

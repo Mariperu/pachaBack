@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+titulo
+{% endblock %}
+
+{% block body %}
+    <h1>Colegio Ruso БОГИ</h1>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNPpwQ2y9N8w231ocwr9EepJjYASXF76lqOQ&usqp=CAU" alt="">
+    <h2>Inscripciones abiertas</h2>
+    {% for curso in cursos%}
+            <p><b>CURSO: </b> {{curso.nombre}}</p>
+    {% endfor %}
+    <a href="{% url 'createAlumno' %}">I N S C R I B I R S E</a>
+    <h2>Sabes alguno de esos cursos?, trabaja con nosotros</h2>
+    <a href="{% url 'createProfesor' %}">P O S T U L A R</a>
+    <h2>Mira a tiempo real nuestros las inscripciones</h2>
+    <a href="{% url 'salones' %}">S A L O N E S</a>
+{% endblock%}

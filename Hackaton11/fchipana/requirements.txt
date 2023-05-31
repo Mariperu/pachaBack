@@ -1,0 +1,6 @@
+flask
+flask-orator
+requests
+psycopg2-binary
+bcrypt
+pyjwt

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Hackaton 10{% endblock %}
+
+{% block content %}
+    
+        <table>
+            <tr>
+                <th>ID Venta</th>
+                <th>Producto</th>
+                <th>Cantidad vendida</th>
+                <th>Precio</th>
+            </tr>
+            {% for compra in compras %}
+            <tr>
+                <td>{{ compra.id }}</td>
+                <td>{{ compra.producto }}</td>
+                <td>{{ compra.cantidad }}</td>
+                <td>{{ compra.monto }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <br><br>
+    <div>
+        {% if cursos %}
+        <h2 class="text-uppercase text-center mb-5">CONOCE NUESTROS CURSOS</h2>
+        <ul class="list-group">
+            <div class="row">
+                {% for cur in cursos %}
+                <div class="col-md-6 mb-3">
+                    <li class="list-group-item shadow">
+                        <img src="/static/img/education.png" alt="" width="45" height="45">
+                        <span class="text-primary">{{ cur.nombre }}</span>
+                    </li>
+                </div>
+                {% endfor %}
+            </div>
+        </ul>
+        {% else %}
+            <p>No hay cursos disponibles.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

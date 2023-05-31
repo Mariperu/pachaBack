@@ -1,0 +1,12 @@
+{% extends "baseForm.html" %}
+{% block titulo_pagina %} Agregar Alumno {% endblock %}titulo
+
+{% block principal %}
+            {{ form.nombre.label }} {{ form.nombre }}<br>
+            {{ form.identifAlumno.label }} {{ form.identifAlumno }}<br>
+            {{ form.correo.label }} {{ form.correo }}<br>
+            {{ form.dni.label }} {{ form.dni }}<br>
+            {{ form.edad.label }} {{ form.edad }}<br>
+            {{ form.curso_id.label }} {{ form.curso_id }}<br>
+
+{% endblock %}

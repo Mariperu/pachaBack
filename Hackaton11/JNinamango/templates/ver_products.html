@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Producto</title>
+</head>
+<body>
+    
+    <h1>ALMACEN: Lista Productos</h1>
+    {% for products in listaProducts %}
+    <ul>
+        <li> ID -> {{products.id}} 
+            <ul>
+                <li>Nombre: {{products.nombre}} - Precio: {{products.precio}} - Stock: {{products.stock}}</li>
+            </ul>
+        </li>   
+    </ul>
+    {% endfor %}
+</body>
+</html>

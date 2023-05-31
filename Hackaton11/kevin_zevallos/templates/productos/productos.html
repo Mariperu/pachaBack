@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Hackaton 11{% endblock %}
+
+{% block content %}
+    
+        <table>
+            <tr>
+                <th>ID Producto</th>
+                <th>Producto</th>
+                <th>Stock</th>
+            </tr>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.producto }}</td>
+                <td>{{ producto.stock }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+{% endblock %}

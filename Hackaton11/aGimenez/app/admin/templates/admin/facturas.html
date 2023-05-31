@@ -1,0 +1,23 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    Facturas
+{% endblock %}
+
+{% block content %}
+
+    <h2>Listado de Facturas</h2>
+    <ul>
+    {% for factura in facturas %}
+        <li>
+            <a href="{{ url_for('admin.show_factura', slug=factura.numero_factura) }}">
+            Nro Factura: {{ factura.numero_factura }}
+            Cliente: {{factura.cliente}}
+            Total: ${{factura.total}}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+
+
+{% endblock %}

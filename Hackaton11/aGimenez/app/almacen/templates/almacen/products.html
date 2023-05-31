@@ -1,0 +1,19 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    Productos
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="{{ url_for('almacen.product_form') }}">Añadir producto</a>
+    </div>
+    <h2>Listado de Productos</h2>
+    <ul>
+    {% for product in products %}
+        <li>
+            <a href="{{ url_for('almacen.update_product_form', product_id=product.id) }}">{{ product.nombre }} Stock: {{product.stock}} Precio: ${{product.precio}}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %} Administracion del Colegio {% endblock %}
+{% block titulo_principal %} Bienvenido a la Administracion del Colegio {% endblock %}
+
+{% block principal %}
+    <a href="{% url 'crear_curso' %}"> Crear Curso |</a>
+    <a href="{% url 'contratar_profesor' %}"> Contratar Profesor |</a>
+    <a href="{% url 'crear_alumno' %}"> Crear Alumno |</a>
+    <a href="{% url 'crear_matricula' %}"> Crear Matricula</a><br><br>
+
+    {% if cursos %}
+        {% for curso in cursos%}
+            <p>Curso: {{curso.nombre}}</p>
+        {% endfor %}
+    {% else %}
+        <h4>No hay cursos disponibles</h4>
+    {% endif %}
+
+    <a href="{% url 'show_curso' %}"> Ver Salones</a>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base_template.html" %}
+
+{% block title %}Product{% endblock %}
+
+{% block content %}
+<h1>Vista Productos:</h1>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Precio Unitario</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ product.nombre }}</td>
+            <td>{{ product.categoria }}</td>
+            <td>{{ product.stock }} unid.</td>
+            <td>s/ {{ product.precioUnitario }}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+{% endblock %}

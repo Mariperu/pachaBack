@@ -1,0 +1,14 @@
+{% extends "baseForm.html" %}
+{% block titulo_pagina %} Agregar Profesor {% endblock %}titulo
+
+{% block principal %}
+            {{ form.nombre.label }} {{ form.nombre }}<br>
+            {{ form.identifProfesor.label }} {{ form.identifProfesor }}</td><br>
+            {{ form.correo.label }} {{ form.correo }}<br>
+            {{ form.dni.label }} {{ form.dni }}<br>
+            {{ form.edad.label }} {{ form.edad }}<br>
+            {{ form.experiencia.label }} {{ form.experiencia }}<br>
+            {{ form.curso_id.label }} {{ form.curso_id }}<br>
+
+
+{% endblock %}
