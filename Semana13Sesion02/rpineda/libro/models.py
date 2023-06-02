@@ -1,31 +1,31 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class UserApp(User):
 
-    nacionalidad = models.ForeignKey('Nacionalidad', on_delete=models.CASCADE, null=True)
-    tipoDocumento = models.ForeignKey('DocumentoIdentidad', on_delete=models.CASCADE, null=True)
+class UserApp(User):
+    nacionalidad = models.ForeignKey(
+        'Nacionalidad', on_delete=models.CASCADE, null=True)
+    tipoDocumento = models.ForeignKey(
+        'DocumentoIdentidad', on_delete=models.CASCADE, null=True)
     numeroDocumento = models.CharField(max_length=13)
     sexo = models.ForeignKey('Sexo', on_delete=models.CASCADE, null=True)
 
 
-
-    
 class Sexo(models.Model):
     id = models.AutoField(primary_key=True)
     sexo = models.CharField(max_length=1, null=True)
+
     def __str__(self):
         return self.sexo
 
 
-    
 class Nacionalidad(models.Model):
     id = models.AutoField(primary_key=True)
     pais = models.CharField(max_length=200)
 
     def __str__(self):
         return self.pais
-    
+
 
 class DocumentoIdentidad(models.Model):
     id = models.AutoField(primary_key=True)
@@ -33,7 +33,6 @@ class DocumentoIdentidad(models.Model):
 
     def __str__(self):
         return self.tipoDocumento
-
 
 
 class Book(models.Model):
@@ -44,18 +43,23 @@ class Book(models.Model):
     def __str__(self):
         return self.name
 
+
 class Autor(models.Model):
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
     books = models.ManyToManyField(Book)
-    nacionalidad = models.ForeignKey(Nacionalidad, on_delete=models.CASCADE, null=True)
-    tipoDocumento = models.ForeignKey(DocumentoIdentidad, on_delete=models.CASCADE, null=True)
+    nacionalidad = models.ForeignKey(
+        Nacionalidad, on_delete=models.CASCADE, null=True)
+    tipoDocumento = models.ForeignKey(
+        DocumentoIdentidad, on_delete=models.CASCADE, null=True)
     numeroDocumento = models.CharField(max_length=13)
     sexo = models.ForeignKey(Sexo, on_delete=models.CASCADE, null=True)
+
     def __str__(self):
         return self.name
-    
+
+
 class RegistroLibro(models.Model):
     id = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
