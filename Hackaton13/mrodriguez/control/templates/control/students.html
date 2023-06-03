@@ -1,0 +1,16 @@
+{% extends 'index.html'%} {% block content %}
+<h1>Alumnos</h1>
+<br />
+<p>Lista de alumnos:</p>
+
+<div class="row">
+  {% for student in students %}
+  <ul class="list-group">
+    <li class="list-group-item">
+      <a href="{% url 'student_detail' student.id %}">{{student.fullname}}</a>
+    </li>
+    <br />
+  </ul>
+  {% endfor %}
+</div>
+{% endblock content%}

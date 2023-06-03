@@ -1,0 +1,33 @@
+{% extends 'index.html'%} {% block content %}
+<h1>Profesores</h1>
+<br />
+<p>Selecciona una opción:</p>
+
+<div class="row">
+  <div class="col-sm-3 mb-3">
+    <div class="card w-80 text-center">
+      <div class="card-body">
+        <br />
+        <h4 class="card-title">Registrar notas</h4>
+        <br />
+        <a href="{% url 'grade_form' %}" class="btn btn-primary btn-lg"
+          >Registrar</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3 mb-3">
+    <div class="card w-80 text-center">
+      <div class="card-body">
+        <br />
+        <h4 class="card-title">Registrar asistencia</h4>
+        <br />
+        <a href="{% url 'attendance_form' %}" class="btn btn-primary btn-lg"
+          >Registrar</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content%}

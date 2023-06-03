@@ -1,0 +1,20 @@
+{% extends 'index.html'%} {% comment %} ------------------------------------- {%
+endcomment %} {% comment %} {% endcomment %} {% block content %}
+<div class="card">
+  <div class="card-header"><h4>Estudiante: {{student.fullname}}</h4></div>
+
+  <div class="card-header"><strong>Notas</strong></div>
+  {% for grade in grades %}
+  <ul class="list-group">
+    <li class="list-group-item">{{grade}}</li>
+  </ul>
+  {% endfor %}
+
+  <div class="card-header"><strong>Asistencias</strong></div>
+  {% for attendance in attendances %}
+  <ul class="list-group">
+    <li class="list-group-item">{{attendance}}</li>
+  </ul>
+  {% endfor %}
+</div>
+{% endblock content%}
