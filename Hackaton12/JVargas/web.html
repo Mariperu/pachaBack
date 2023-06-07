@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página de inicio</title>
+</head>
+<body>
+    <h1>Bienvenido al Colegio</h1>
+    <h2>Cursos Libres:</h2>
+    <ul>
+        {% for curso in cursos_libres %}
+        <li>{{ curso.nombre }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

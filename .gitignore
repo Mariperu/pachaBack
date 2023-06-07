@@ -134,3 +134,4 @@ vscode
 
 .idea/
 instance/
+.DS_Store
