@@ -5,3 +5,4 @@ django-adminlte3==0.1.6
 django-crispy-forms==2.0
 sqlparse==0.4.4
 tzdata==2023.3
+ 
