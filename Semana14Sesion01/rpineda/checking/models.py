@@ -52,10 +52,10 @@ class Asiento(models.Model):
 
 class Vuelo(models.Model):
     id = models.AutoField(primary_key=True)
-    fechaTakeOff = models.DateTimeField(auto_now=True)
-    aeropuertoTakeOff = models.CharField(max_length=200)
-    fechaLanding = models.DateTimeField()
-    aeropuertoLanding = models.CharField(max_length=200)
+    fechaTakeOff = models.DateTimeField(null=True, blank=True)
+    aeropuertoTakeOff = models.CharField(max_length=200, null=True, blank=True)
+    fechaLanding = models.DateTimeField(null=True, blank=True)
+    aeropuertoLanding = models.CharField(max_length=200, null=True, blank=True)
     avion = models.ForeignKey(Avion, on_delete=models.CASCADE)
 
     def __str__(self):

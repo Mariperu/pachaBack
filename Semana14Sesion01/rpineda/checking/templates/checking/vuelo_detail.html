@@ -1,0 +1,25 @@
+
+
+{% extends 'adminlte/base.html' %}
+
+<!-- Set title of app -->
+{% block title %}Checking{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %}
+<h1>Bienvenido al proceso de Cheking</h1>
+
+<ul>
+  <!-- Iterate over object_list -->
+  <h1>{{ object.id }}</h1>
+<p>{{ object.fechaTakeOff }}</p>
+<p>{{ object.aeropuertoTakeOff }}</p>
+<p>{{ object.fechaLanding }}</p>
+<p>{{ object.aeropuertoLanding }}</p>
+<p>{{ object.avion }}</p>
+
+  <hr/>
+
+</ul>
+
+{% endblock %}

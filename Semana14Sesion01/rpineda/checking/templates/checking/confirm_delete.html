@@ -1,0 +1,24 @@
+{% extends 'adminlte/base.html' %}
+
+<!-- Set title of app -->
+{% block title %}Checking{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %}
+<h1>Bienvenido al proceso de Cheking</h1>
+
+
+<form method="post">{% csrf_token %}
+     
+ 
+ 
+ 
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+     
+     
+     
+     
+        <input type="submit" value="Confirm">
+    </form>
+
+{% endblock %}

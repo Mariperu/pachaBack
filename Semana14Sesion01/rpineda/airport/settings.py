@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'checking.apps.CheckingConfig'
+    'checking.apps.CheckingConfig',
+    # General use templates & template tags (should appear first before apps)
+    'adminlte3',
+
+    # Optional: Django admin theme (must be before django.contrib.admin)
+    'adminlte3_theme',
+    'crispy_forms',
+    'user.apps.UserConfig',
+    "crispy_bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -122,3 +131,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
+
+LOGIN_REDIRECT_URL ="index"
+
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+####################collage email id ##############
+EMAIL_HOST_USER="pruebaspachaqtec@gmail.com"
+EMAIL_HOST_PASSWORD="maaxlzpzdzoapjvw"
+
+CSRF_TRUSTED_ORIGINS = ['https://5c44-2001-1388-19e9-eafc-b9fd-ecf7-8915-347.ngrok-free.app']
