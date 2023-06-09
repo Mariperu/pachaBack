@@ -37,3 +37,16 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 ## Generic Views
 
 https://www.geeksforgeeks.org/class-based-generic-views-django-create-retrieve-update-delete/
+
+
+Req:
+
+```
+asgiref==3.7.2
+crispy-bootstrap4==2022.1
+Django==4.2.2
+django-adminlte3==0.1.6
+django-crispy-forms==2.0
+sqlparse==0.4.4
+tzdata==2023.3
+```
