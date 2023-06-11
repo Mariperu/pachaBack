@@ -1,0 +1,22 @@
+{% extends 'adminlte/base.html' %} {% block title %}Pharmacy{% endblock %}
+<br />
+{%block content %}
+<br />
+{% if user.is_authenticated %}
+<h1>Administrador de Ventas</h1>
+<br />
+<section>
+  <li>
+    <a href="{% url 'product_list' %}">Ver productos</a>
+  </li>
+  <br />
+  <li><a href="{% url 'create_customer' %}">Agregar nuevo Cliente</a></li>
+  <br />
+  <li><a href="{% url 'create_invoice' %}">Generar nuevo pedido</a></li>
+</section>
+
+{% else %}
+<h1>Bienvenid@ a Pharmacy</h1>
+<p>Inicia sesión para continuar:</p>
+<a href="{% url 'login' %}">Iniciar sesión</a>
+{%endif%} {% endblock %}

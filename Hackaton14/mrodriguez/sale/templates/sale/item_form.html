@@ -1,0 +1,15 @@
+{% extends 'adminlte/base.html' %} {% block title %}Item{% endblock %}
+<br />
+
+{% block content %}
+<h3>Agregar nuevo item al pedido:</h3>
+<br />
+
+<div class="col-12">
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Guardar" />
+  </form>
+</div>
+
+{% endblock %}

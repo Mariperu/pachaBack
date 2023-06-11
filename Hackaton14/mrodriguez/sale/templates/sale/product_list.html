@@ -1,0 +1,36 @@
+{% extends 'adminlte/base.html' %}
+<br />
+{% block title %}Lista de productos{%endblock %}
+<br />
+{%block content %}
+
+<h3>Lista de productos:</h3>
+<br />
+<a href="{% url 'create_item' %}">Agregar items al pedido </a> |
+<a href="{% url 'invoice_list' %}">Ver lista de pedidos</a>
+<br />
+<br />
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for object in object_list %}
+    <tr>
+      <td>{{ object.name }}</td>
+      <td>{{ object.description }}</td>
+      <td>${{ object.price }}</td>
+      <td>{{ object.stock }}</td>
+    </tr>
+    {% empty %}
+    <p>No hay datos.</p>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

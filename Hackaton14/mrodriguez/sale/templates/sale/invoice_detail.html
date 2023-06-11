@@ -1,0 +1,46 @@
+{% extends 'adminlte/base.html' %}
+<br />
+{% block title %}Boletas{%endblock %}
+<br />
+{%block content %}
+<button>
+  <a href="{% url 'invoice_list' %}">Regresar</a>
+</button>
+<br />
+<br />
+<h3>Pedido: {{ invoice.id }}</h3>
+<p>Fecha creación: {{ invoice.date }}</p>
+<p>Cliente: {{ invoice.customer }}</p>
+<p>Total a pagar: $ {{ invoice.total }}</p>
+<p>Pagado: {{ invoice.paid }}</p>
+<br />
+<br />
+<h4>Items</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Producto - precio unitario</th>
+      <th scope="col">Cantidad</th>
+    </tr>
+  </thead>
+  {% for item in items %}
+  <tbody>
+    <tr>
+      <td>{{ item.product}}</td>
+      <td>{{ item.quantity }}</td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+<br />
+{{error}}
+<form method="POST">
+  {% csrf_token %} {{form.as_p}}
+  <br />
+  <button>Guardar y Pagar</button>
+</form>
+<br />
+<br />
+<br />
+{% endblock %}

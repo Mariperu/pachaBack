@@ -1,0 +1,38 @@
+{% extends 'adminlte/base.html' %}
+<br />
+{% block title %}Pedidos{%endblock %}
+<br />
+{%block content %}
+
+<h3>Lista de pedidos:</h3>
+<br />
+<a href="{% url 'create_invoice' %}">Generar nuevo pedido</a>
+<br />
+<br />
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Total</th>
+      <th scope="col">Pagado</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for object in object_list %}
+    <tr>
+      <td>{{ object.id }}</td>
+      <td>{{ object.date }}</td>
+      <td>{{ object.customer }}</td>
+      <td>{{ object.total }}</td>
+      <td>{{ object.paid }}</td>
+      <td><a href="{% url 'invoice_detail' object.id %}">Ver</a></td>
+    </tr>
+    {% empty %}
+    <p>No hay datos.</p>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

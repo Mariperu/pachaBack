@@ -1,0 +1,13 @@
+{% extends 'adminlte/base.html' %}
+<br />
+{% block title %}Iniciar sesión{%endblock %}
+<br />
+{%block content%}
+<h1>Iniciar sesión</h1>
+<br />
+<p>{{error}}</p>
+<form action="{% url 'login' %}" method="POST">
+  {% csrf_token %} {{form.as_p}}
+  <button>Iniciar</button>
+</form>
+{%endblock%}
