@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Farmacia - Realizar Compra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    /* Estilos personalizados */
+    body {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    .container {
+      max-width: 960px;
+    }
+    .form-compra {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Farmacia</a>
+  </nav>
+
+  <div class="container">
+    <h1>Realizar Compra</h1>
+
+    <h2>Cliente: {{ cliente.nombre }}</h2>
+
+    <form class="form-compra" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Realizar Compra</button>
+    </form>
+  </div>
+
+  <footer class="bg-dark text-white fixed-bottom">
+    <div class="container">
+      <p>Todos los derechos reservados &copy; 2023</p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Login</title>
+</head>
+
+<body class="bg-[#262837]">
+  {% if page == 'login' %}
+  <div class="min-h-screen flex items-center justify-center text-gray-300 flex-col">
+    <div class="bg-[#1F1D2B] p-8 rounded-xl">
+      <div class="mb-10">
+        <h1 class="text-3xl uppercase font-bold text-center">Iniciar Session</h1>
+      </div>
+      <form class="flex flex-col gap-4" method="POST">
+        {% csrf_token %}
+        <div class="relative mt-4">
+          <input name="nombre" type="text"
+            class="bg-gray-300 w-full border text-gray-600 rounded-xl border-gray-299 outline-none pl-7 py-2 px-4"
+            placeholder="Correo electronico" />
+        </div>
+        <div class="relative mt-4">
+          <input placeholder="Contraseña" name="password" type="password"
+            class="bg-gray-300 w-full border text-gray-600 rounded-xl border-gray-299 outline-none pl-7 py-2 px-4" />
+
+        </div>
+        <div class="relative mt-4">
+          <input type="submit" value="Ingresar"
+            class="flex flex-row items-center justify-center gap-4 bg-sky-600 w-full py-2 px-6 rounded-xl uppercase hover:scale-105 transition-all" />
+        </div>
+
+      </form>
+      <div class="mt-4">
+        <a href="{% url 'register' %}">No tienes una cuenta? <span class="text-sky-400">registrate aqui</span></a>
+      </div>
+    </div>
+  </div>
+
+  {% else %}
+
+  <div class="min-h-screen flex items-center justify-center text-gray-300 flex-col">
+    <div class="bg-[#1F1D2B] p-8 rounded-xl">
+      <div class="mb-10">
+        <h1 class="text-3xl uppercase font-bold text-center">Crear Usuario:</h1>
+      </div>
+      <form class="form" action="" method="POST">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="w-full gap-4 mb-5">
+          <label class="bg-gray-300  border text-gray-600 rounded-xl border-gray-299 outline-none pl-7 py-2 px-4 mt-2 mb-5">{{field.label}}</label>
+          <div class="bg-gray-300 w-full border text-gray-600 rounded-xl border-gray-299 outline-none pl-7 py-2 px-4">{{ field }}</div>
+        </div>
+        {% endfor %}
+        <div class="relative mt-4">
+          <input type="submit" value="Registrarse"
+            class="flex flex-row items-center justify-center gap-4 bg-sky-600 w-full py-2 px-6 rounded-xl uppercase hover:scale-105 transition-all" />
+        </div>
+      </form>
+      <div class="mt-4">
+        <a href="{% url 'login' %}">Ya tengo una cuenta <span class="text-sky-400">ingresa aqui</span></a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</body>
+
+</html>

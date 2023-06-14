@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Calendario de Asistencia</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+</head>
+<body>
+
+  <div id="calendar"></div>
+  <script>
+    // Obtén las fechas de asistencia utilizando la API REST
+    fetch('/calendario_asistencia/{{ id }}/')
+      .then(response => response.json())
+      .then(data => {
+        // Inicializa el calendario con las fechas de asistencia obtenidas
+        $('#calendar').fullCalendar({
+          events: data.map(fecha => ({
+            title: 'Asistencia',
+            start: fecha
+          }))
+        });
+      })
+      .catch(error => {
+        // Manejo de errores
+        console.error('Error al obtener las fechas de asistencia:', error);
+      });
+  </script>
+
+  <!-- Configura tu API REST en Python utilizando Flask -->
+  <script>
+    // Flask endpoint para obtener las fechas de asistencia
+    var asistenciaEndpoint = '/asistencia';
+
+    // Configuración de Flask CSRF token si es necesario
+    var csrfToken = '{% csrf_token %}';
+    // Agrega el token CSRF a las solicitudes fetch
+    function fetchWithCsrf(url, options) {
+      options = options || {};
+      options.headers = options.headers || {};
+      options.headers['X-CSRFToken'] = csrfToken;
+      return fetch(url, options);
+    }
+  </script>
+</body>
+</html>

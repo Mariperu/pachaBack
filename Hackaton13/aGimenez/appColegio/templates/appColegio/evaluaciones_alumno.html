@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1>Evaluaciones del Alumno: {{ request.user.username }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Profesor</th>
+                <th>Curso</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evaluacion in evaluaciones %}
+            <tr>
+                <td>{{ evaluacion.profesor.username }}</td>
+                <td>{{ evaluacion.curso.nombre }}</td>
+                <td>{{ evaluacion.fecha }}</td>
+                <td>{{ evaluacion.tipo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

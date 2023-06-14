@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gráfico de Notas</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="chart"></canvas>
+
+  <script>
+    // Hacer la llamada a la API y procesar los datos
+    fetch('/api/notas/{{ id }}/')
+      .then(response => response.json())
+      .then(data => {
+        // Procesar los datos recibidos y darles formato adecuado para el gráfico
+        const notas = {};
+
+        // Ejemplo de procesamiento de datos para el gráfico
+        data.forEach(nota => {
+          const curso = nota.curso;
+          notas[curso.name] = parseFloat(nota.nota);
+        });
+
+        // Crear el gráfico
+        const canvas = document.getElementById('chart');
+        const ctx = canvas.getContext('2d');
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: Object.keys(notas),
+            datasets: [{
+              label: 'Notas de Cursos',
+              data: Object.values(notas),
+              backgroundColor: 'rgba(75, 192, 192, 0.6)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Error al obtener los datos de la API:', error);
+      });
+  </script>
+</body>
+</html>

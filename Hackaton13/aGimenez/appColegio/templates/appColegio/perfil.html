@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <ul><p> Perfil de {{ user.last_name }}, {{ user.first_name }}</p><br></ul>
+    </div>
+    <div>
+    <ul>
+        <p>Usuario: {{ user.username }} </p>
+        <p>Rol: {{ user.role }} </p>
+        <p>Cursos: {% for curso in user.cursos.all %} </p>
+            <p class="indentacion">{{ curso.nombre }}</p>
+                    {% endfor %}
+    </ul>
+    </div>
+
+{% endblock %}

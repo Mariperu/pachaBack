@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <h1>{{context.title}}</h1>
+    <form method="POST"  action= "show_data/">
+        {% csrf_token %}
+        {{ context.form.as_div }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}

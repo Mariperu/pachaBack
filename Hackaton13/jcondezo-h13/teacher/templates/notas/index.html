@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{%block title%}
+REGISTRO DE NOTAS
+{%endblock%}
+
+{% block contend%}
+<div>
+    <td><a class="btn btn-sm btn-primary" href="crear">Añadir</a></td>
+</div>
+<div class="table-responsive col-md-8 offset-md-2">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Periodo</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Alumno</th>
+                <th scope="col">Nota 1</th>
+                <th scope="col">Nota 2</th>
+                <th scope="col">Nota 3</th>
+                <th scope="col">Nota 4</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cli in notas %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ cli.periodo }}</td>
+                <td>{{ cli.curso }}</td>
+                <td>{{ cli.alumno }}</td>
+                <td>{{ cli.nota1 }}</td>
+                <td>{{ cli.nota2 }}</td>
+                <td>{{ cli.nota3 }}</td>
+                <td>{{ cli.nota4 }}</td>
+                <td><a class="btn btn-sm btn-info" href="editar/{{cli.id}}">.</a></td>
+                <td><a class="btn btn-sm btn-danger" href="eliminar/{{cli.id}}">Elim</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{%endblock%}

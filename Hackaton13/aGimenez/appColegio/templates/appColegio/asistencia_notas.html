@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.curso }} {{ cursos }}<br>
+        Alumno {{ form.alumnos}} {{ alumno }}<br>
+        {{ form.asistencia.label }} {{ form.asistencia }}<br>
+        {{ form.nota.label }} {{ form.nota }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock %}

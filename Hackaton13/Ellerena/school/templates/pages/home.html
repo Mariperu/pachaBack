@@ -1,0 +1,26 @@
+{% extends 'index.html'%}
+{% block content %}
+<div class="w-[85vw] h-[90vh] mx-auto">
+    <div class="flex flex-col items-center px-16 pt-10 ">
+        <img class="h-[250px] w-[250px]" src="https://images.pexels.com/photos/3877563/pexels-photo-3877563.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Logo">
+        <p class="text-gray-300 pt-5">
+            BIENVENIDO
+        </p>
+    </div>
+    <div class="px-16 pt-10 text-gray-300 text-2xl">
+        Mire el catalogo de cursos:
+        <div class="w-full grid grid-cols-2 rounded-md gap-4 mt-6">
+            {% for course in courses%}
+            <div class="col-span-1 border border-gray-300 w-[100%] h-[100%] px-4 rounded-md">
+                <div class="flex flex-row items-center justify-center gap-4">
+                    <img class="h-[100px] w-[100px] rounded-full" src="{{course.img_path}}" alt="Logo">
+                    <h1>{{course.name}}</h1>
+                </div>
+                <p>{{course.description}}</p>
+                <h1>disponibilidad: {{course.availability}}</h1>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

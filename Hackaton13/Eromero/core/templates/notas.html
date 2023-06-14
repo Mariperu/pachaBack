@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Notas</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Curso</th>
+        <th>Nota</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for nota in notas %}
+        <tr>
+          <td>{{ nota.curso.nombre }}</td>
+          <td>{{ nota.valor }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

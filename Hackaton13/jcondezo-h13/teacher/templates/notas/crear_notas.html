@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block title%}
+CREAR NOTAS
+{% endblock %}
+
+{% block contend %}
+<div class="col-md-4 offset-md-4">
+    <form method="POST">
+        {% csrf_token%}
+        <div class="card border border-secondary">
+            <div class="card-header bg-secondary text-white text-center">
+                Registro de Notas
+            </div>
+            <div class="card-body">
+                {{ nota_forms.as_p }}
+                <button class="btn btn-sm btn-primary" type="submit">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

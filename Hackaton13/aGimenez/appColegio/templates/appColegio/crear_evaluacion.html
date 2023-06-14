@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<form class="form" method="post">
+	{% csrf_token %}
+            {{form.profesor.label }} {{ form.profesor }} {{ user.username }}<br>
+            <label> Cursos </label>
+            <select id="curso" name="curso">
+                {% for curso in cursos %}
+                    <option value="{{ curso.id }}">{{ curso.nombre }}</option>
+                {% endfor %}
+            </select><br>
+            {{ form.fecha.label }} {{ form.fecha }}<br>
+            {{ form.tipo.label }} {{ form.tipo }}<br>
+
+	<button type="submit" id="submit">Cargar Asistencia y Notas</button>
+</form>
+{% endblock %}

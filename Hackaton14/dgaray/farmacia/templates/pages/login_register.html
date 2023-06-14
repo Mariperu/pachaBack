@@ -1,0 +1,84 @@
+{% extends 'index.html' %}
+{% block content %}
+{% if page == 'login'%}
+<div class="min-h-screen flex items-center justify-center text-gray-300 flex-col">
+    <div class="bg-[#1F1D2B] p-8 rounded-xl">
+        <div class="mb-10">
+            <h1 class="text-3xl uppercase font-bold text-center">Iniciar Session</h1>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="w-full flex flex-row justify-between items-center">
+                <label>
+                    Username:
+                </label>
+                {{ form.username }}
+            </div>
+            <div class="w-full flex flex-row justify-between items-center">
+                <label>
+                    Password:
+                </label>
+                {{ form.password }}
+            </div>
+            <input type="submit" value="Register"
+                class="flex flex-row items-center justify-center gap-4 bg-sky-600 w-full py-2 px-6 rounded-xl uppercase hover:scale-105 transition-all mt-2">
+        </form>
+        <div class="mt-4">
+            <a href="{% url 'register' %}">No tienes una cuenta? <span class="text-sky-400">registrate aqui</span></a>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="min-h-screen flex items-center justify-center text-gray-300 flex-col">
+    <div class="bg-[#1F1D2B] p-8 rounded-xl">
+        <div class="mb-10">
+            <h1 class="text-3xl uppercase font-bold text-center">Crear Usuario</h1>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="w-full flex flex-row justify-between items-center">
+                <label>
+                    Username:
+                </label>
+                {{ form.username }}
+            </div>
+            <div class="w-full flex flex-row justify-between items-center">
+                <label>
+                    email:
+                </label>
+                {{ form.email }}
+            </div>
+            <div class="w-full flex flex-row justify-between items-center">
+                <label>
+                    Password:
+                </label>
+                {{ form.password1 }}
+            </div>
+            <div class="w-full flex flex-row justify-between items-center">
+                <label>
+                    Confirm Password:
+                </label>
+                {{ form.password2 }}
+            </div>
+            <div class="flex flex-row gap-4 items-center justify-center mt-2">
+                <label>
+                    Admin
+                </label>
+                {{ form.is_admin }}
+            </div>
+            <div class="flex flex-row gap-4 items-center justify-center mt-2">
+                <label>
+                    Vendedor
+                </label>
+                {{ form.is_seller }}
+            </div>
+            <input type="submit" value="Register"
+                class="flex flex-row items-center justify-center gap-4 bg-sky-600 w-full py-2 px-6 rounded-xl uppercase hover:scale-105 transition-all mt-2">
+        </form>
+        <div class="mt-4">
+            <a href="{% url 'login' %}">Ya tengo una cuenta  <span class="text-sky-400">ingresa aqui</span></a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>{{context.title}}</h1>
+
+    <p>Estas seguro que quieres eliminar el siguiente elemento?</p>
+    <p><strong>Nombre:</strong> {{ context.item.nombre }}</p>
+    <p><strong>Correo:</strong> {{ context.item.correo }}</p>
+
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+{% endblock %}

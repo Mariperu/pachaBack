@@ -1,0 +1,8 @@
+{% block body%}
+<h1>{{context.title}}</h1>
+<ul>
+    {% for item in context.list %}
+    <li>{{item.nombre}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

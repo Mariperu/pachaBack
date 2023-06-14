@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1> Pasos a Seguir: </h1>
+<ul>
+ <li>1- Crear superusuario en la consola.</li>
+ <li>2- Con el superusuario loggeado, crear todos los cursos necesarios.</li>
+ <li>3- Tambien crear los usuarios con sus respectivos roles (no se añadió el atributo 'role' en django admin para cargarlo).</li>
+ <li>4- Si se loggea con un profesor se puede crear una evaluación.</li>
+ <li>5- Si se loggea con un alumno se puede ver las evaluaciones.</li>
+</ul>
+{% endblock %}
