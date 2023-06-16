@@ -52,7 +52,9 @@ INSTALLED_APPS = [
     'projects',
     'education',
     'extras',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'search'
+
 ]
 
 MIDDLEWARE = [
@@ -132,7 +134,7 @@ REST_FRAMEWORK = {
 
 LANGUAGE_CODE = 'es-pe'
 
-TIME_ZONE = 'America/Lima'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
