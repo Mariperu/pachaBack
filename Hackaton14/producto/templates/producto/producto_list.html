@@ -1,0 +1,49 @@
+{% extends 'adminlte/base.html' %}
+
+<!-- Set title of app -->
+{% block title %}Producto{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %}
+<div class="row mb-3">
+    <h4 class="ml-3 col-3">Nuestros Productos</h4>
+    <a class="btn btn-sm btn-primary offset-8" href="add/">Agregar</a>
+</div>
+
+<div class="col-md">
+    <div class="card">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Cantidad</th>
+                    <tr></tr>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ object.nombre }}</td>
+                    <td>{{ object.marca }}</td>
+                    <td>{{ object.precio }}</td>
+                    <td>{{ object.categoria }}</td>
+                    <td>{{ object.cantidad }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" href="{{object.id}}/update">Edit</a>
+                        <a class="btn btn-sm btn-danger" href="{{object.id}}/delete">Elim</a>
+                    </td>
+                </tr>
+                {% empty %}
+                    <li>No hay productos aún.</li>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

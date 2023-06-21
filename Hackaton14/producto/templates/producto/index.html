@@ -1,0 +1,27 @@
+{% extends 'adminlte/base.html' %}
+
+<!-- Set title of app -->
+{% block title %}Checking{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %}
+<h1>Bienvenido al proceso de Cheking</h1>
+
+<ul>
+  <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <li>{{ object.nombre }}</li>
+    <li>{{ object.descripcion }}</li>
+    <li>{{ object.cantidad }}</li>
+    <li>{{ object.marca }}</li>
+    <li>{{ object.precio }}</li>
+    <li>{{ object.categoria }}</li>
+
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

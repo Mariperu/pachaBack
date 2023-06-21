@@ -1,0 +1,45 @@
+{% extends 'adminlte/base.html' %}
+
+<!-- Set title of app -->
+{% block title %}Producto{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %}
+<div class="row mb-3">
+    <h4 class="ml-3 col-3">Boletas</h4>
+    <a class="btn btn-sm btn-primary offset-8" href="add/">Agregar</a>
+</div>
+
+<div class="col-md">
+    <div class="card">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Total</th>
+                    <tr></tr>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ object.fecha }}</td>
+                    <td>{{ object.cliente }}</td>
+                    <td>{{ object.producto }}</td>
+                    <td>{{ object.Cantidad }}</td>
+                    <td>{{ object.montoTotal }}</td>
+                </tr>
+                {% empty %}
+                    <li>No hay productos aún.</li>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

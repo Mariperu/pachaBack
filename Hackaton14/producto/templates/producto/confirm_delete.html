@@ -1,0 +1,16 @@
+{% extends 'adminlte/base.html' %}
+
+<!-- Set title of app -->
+{% block title %}Producto{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %}
+<h1>Bienvenido....</h1>
+
+
+<form method="post">{% csrf_token %}
+    <p>Esta Seguro de Eliminar "{{ object }}"?</p>
+    <input type="submit" class="btn btn-danger" value="Confirmar">
+</form>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+$ python -m venv myenv
+$ source myenv/bin/activate
+$ pip install Flask psycopg2 Django python-dotenv
+$ django-admin startproject farmacia_project
+$ cd farmacia_project
+$ django-admin startapp farmacia_app

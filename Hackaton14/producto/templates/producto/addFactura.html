@@ -1,0 +1,18 @@
+{% extends 'adminlte/base.html' %}
+
+<!-- Set title of app -->
+{% block title %}Factura{% endblock %}
+
+<!-- Specify content of main body of page -->
+{% block content %}
+
+<div class="col-12">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary mb-3">
+    </form>
+</div>
+
+
+{% endblock %}
