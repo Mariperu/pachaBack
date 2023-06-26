@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+
+    <p>¿Está seguro que quiere borrar "{{ object }}"?</p>
+
+        <input type="submit" value="Confirm">
+    </form>
+    <a class="feed" href="{% url 'list' %}">Volver</a>
+
+{% endblock %}

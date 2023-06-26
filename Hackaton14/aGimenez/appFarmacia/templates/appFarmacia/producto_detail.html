@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<nav class="second-nav">
+      <a class="feed" href="{% url 'index' %}">Inicio</a>
+      <a class="feed" href="/producto/{{ object.id }}/delete">Borrar</a>
+      <a class="feed" href="/producto/{{ object.id }}/update">Actualizar</a>
+</nav>
+
+<h1>Detalle de Productos</h1>
+
+<ul>
+  <!-- Iterate over object_list -->
+  <h3>ID: {{ object.id }}</h3>
+<p>Nombre: {{ object.nombre }}</p>
+<p>Descripcion: {{ object.descripcion }}</p>
+<p>Laboratorio: {{ object.laboratorio }}</p>
+<p>Stock: {{ object.stock }}</p>
+<p>Precio: s/{{ object.precio }}</p>
+
+  <hr/>
+
+</ul>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+			{% if request.user.is_authenticated %}
+ 			<nav class="second-nav">
+			<a class="feed" href="{% url 'index' %}">Inicio</a>
+				{% if user.role == 'Administrador'%}
+					<a class="feed" href="{% url 'list' %}">Ver Productos</a>
+				{% elif user.role == 'Cajero'%}
+					<a class= "feed" href="{% url 'factura_list' %}">Ver Facturas</a>
+				{% endif %}
+			</nav>
+
+			{% else %}
+				<p>Bienvenido, ingrese su identificador para ver sus puntos </p>
+				<script>
+    $(document).ready(function() {
+
+        // Buscar cliente al hacer clic en el botón "Buscar"
+        $(document).on('click', '.buscar-cliente', function(e) {
+            e.preventDefault();
+            var identificador = $('#id_cliente_identificador').val();
+
+            // Realizar la lógica de búsqueda del cliente y obtener los puntos
+            // Puedes hacer una solicitud AJAX al servidor para buscar el cliente en la base de datos
+
+            $.ajax({
+                url: '/buscar_cliente/',
+                method: 'POST',
+                data: {
+                    'identificador': identificador,
+                    'csrfmiddlewaretoken' : '{{ csrf_token }}',
+                },
+                success: function(response) {
+                    if (response.puntos) {
+                        $('#id_puntos').text(response.puntos);
+                    } else {
+                        alert('Cliente no encontrado');
+                    }
+                },
+                error: function() {
+                    alert('Error en la consulta del cliente');
+                }
+            });
+        });
+    });
+</script>
+
+<div id="id_detalles">
+    <div class="formset_row cliente">
+        <p>
+            <label for="id_cliente_identificador">Identificador Cliente:</label>
+            <input type="text" name="cliente_identificador" id="id_cliente_identificador" required>
+            <button class="buscar-cliente">Buscar</button>
+        </p>
+
+        <p>
+            <label for="id_puntos">Puntos:</label>
+            <span id="id_puntos"></span>
+        </p>
+    </div>
+</div>
+
+			{% endif%}
+{% endblock %}

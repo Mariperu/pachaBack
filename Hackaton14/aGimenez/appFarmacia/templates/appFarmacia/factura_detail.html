@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Detalle de la Factura</h1>
+<p>Cliente: {{ factura.cliente }}</p>
+<p>Fecha: {{ object.created }}</p>
+<p>Total: s/ {{ total }}</p>
+<h2>Productos:</h2>
+<ul>
+  {% for producto in productos %}
+    <p>{{ producto.nombre }} - Precio: {{ producto.precio }} - Cantidad: {{ producto.cantProducto }}</p>
+  {% endfor %}
+</ul>
+<a href="{% url 'exportar_factura_txt' factura.id %}" class="btn btn-primary">Exportar a TXT</a>
+{% endblock %}

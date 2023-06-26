@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<nav class="second-nav">
+  <a class="feed" href="{% url 'index' %}">Inicio</a>
+  <a class="feed" href="{% url 'cargar_factura' %}">Crear Factura</a>
+</nav>
+<h1>Lista de Facturas</h1>
+
+<ul>
+  <!-- Iterate over object_list -->
+  {% for object in object_list %}
+  <a href="/factura/{{ object.id }}">{{ object.numero_factura }}</a>
+
+  <hr/>
+  <!-- If objet_list is empty  -->
+  {% empty %}
+  <p>No hay facturas cargadas aún.</p>
+  {% endfor %}
+</ul>
+
+{% endblock %}

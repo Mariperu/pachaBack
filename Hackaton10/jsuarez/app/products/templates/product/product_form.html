@@ -1,0 +1,41 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {% if form.producto.data %}
+        {{ form.producto.data }}
+    {% else %}
+        Nuevo P
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.producto.label }}
+            {{ form.producto(size=128) }}<br>
+            {% for error in form.producto.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.stock.label }}
+            {{ form.stock(size=128) }}<br>
+            {% for error in form.stock.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.precio.label }}
+            {{ form.precio(size=128) }}<br>
+            {% for error in form.precio.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

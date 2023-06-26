@@ -1,0 +1,32 @@
+{% extends "base_template.html" %}
+
+{% block title %}Hackaton 09{% endblock %}
+
+{% block content %}
+    <br>
+    <h3 class="text-center">Alumnos</h3>
+    <div class="table-responsive col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dni</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Correo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alumno in alumnos %}
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{ alumno.nombre }}</td>
+                    <td>{{ alumno.identificador }}</td>
+                    <td>{{ alumno.edad }}</td>
+                    <td>{{ alumno.correo }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base_template.html" %}
+
+{% block title %}Hackaton 09{% endblock %}
+{% block content %}
+{% if current_user.is_anonymous %}
+<h4>INICIA SESIÓN O REGISTRATE PARA ACCEDER</h4>
+{% else %}
+<h4 class="text-center">Bienvenido</h4>
+Alumnos<br>
+<a class="btn btn-info" href="/alumnos">Ver</a> <a class="btn btn-success" href="/admin/alumnos">Cargar</a><br>
+Profesores<br>
+<a class="btn btn-info" href="/profesores">Ver</a> <a class="btn btn-success" href="/admin/profesores">Cargar </a><br>
+Cursos<br>
+<a class="btn btn-info" href="/cursos">Ver</a> <a class="btn btn-success" href="/admin/cursos">Cargar</a><br>
+Salones<br>
+<a class="btn btn-info" href="/salones">Ver</a> <a class="btn btn-success" href="/admin/salones">Cargar</a>
+{% endif %}
+{% endblock %}

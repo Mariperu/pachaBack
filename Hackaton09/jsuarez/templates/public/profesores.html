@@ -1,0 +1,32 @@
+{% extends "base_template.html" %}
+
+{% block title %}Hackaton 09{% endblock %}
+
+{% block content %}
+<br>
+<h3 class="text-center">Profesores</h3>
+<div class="table-responsive col-md-8 offset-md-2">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Dni</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profesor in profesores %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{ profesor.nombre }}</td>
+                <td>{{ profesor.identificador }}</td>
+                <td>{{ profesor.edad }}</td>
+                <td>{{ profesor.correo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

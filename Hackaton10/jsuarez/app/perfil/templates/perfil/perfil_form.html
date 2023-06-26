@@ -1,0 +1,89 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {% if form.nombre.data %}
+        {{ form.nombre.data }}
+    {% else %}
+        Nuevo Perfil
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.nombre.label }}
+            {{ form.nombre(size=128) }}<br>
+            {% for error in form.nombre.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.apellido.label }}
+            {{ form.apellido(size=128) }}<br>
+            {% for error in form.apellido.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.pais.label }}
+            {{ form.pais(size=128) }}<br>
+            {% for error in form.pais.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.ciudad.label }}
+            {{ form.ciudad(size=128) }}<br>
+            {% for error in form.ciudad.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.fechaNacimiento.label }}
+            {{ form.fechaNacimiento }}<br>
+            {% for error in form.fechaNacimiento.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.info.label }}
+            {{ form.info }}<br>
+            {% for error in form.info.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.avatar.label }}
+            {{ form.avatar }}<br>
+            {% for error in form.avatar.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.url.label }}
+            {{ form.url }}<br>
+            {% for error in form.url.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.facebook.label }}
+            {{ form.facebook}}<br>
+            {% for error in form.facebook.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.twitter.label }}
+            {{ form.twitter }}<br>
+            {% for error in form.twitter.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<nav class="second-nav">
+  <a class="feed" href="{% url 'index' %}">Inicio</a>
+  <a class="feed" href="{% url 'view' %}">Agregar Producto</a>
+</nav>
+
+
+<h1>Lista de Productos</h1>
+
+<ul>
+  <!-- Iterate over object_list -->
+  {% for object in object_list %}
+  <a href="/producto/{{ object.id }}">{{ object.nombre }}</a>
+
+  <hr/>
+  <!-- If objet_list is empty  -->
+  {% empty %}
+  <p>No hay productos cargados aún.</p>
+  {% endfor %}
+</ul>
+
+
+{% endblock %}

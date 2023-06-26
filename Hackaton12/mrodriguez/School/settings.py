@@ -12,11 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
-from dotenv import load_dotenv
+
 import os
 
-load_dotenv()
-POSTGRES_PASSWORD = os.environ["POSTGRES_PASSWORD"]
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,10 +83,10 @@ WSGI_APPLICATION = "School.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "enrollment",
+        "NAME": "postgres",
         "USER": "postgres",
-        "PASSWORD": POSTGRES_PASSWORD,
-        "HOST": "127.0.0.1",
+        "PASSWORD": "Estudio8",
+        "HOST": "localhost",
         "PORT": "5432",
     }
 }

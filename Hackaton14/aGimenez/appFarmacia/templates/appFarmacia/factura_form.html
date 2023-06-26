@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {% if form.numero_factura.data %}
+        {{ form.numero_factura.data }}
+    {% else %}
+        Nueva factura
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <script>
+        $(document).ready(function() {
+            var productoCount = 1;
+
+            // Buscar producto al hacer clic en el botón "Buscar"
+            $(document).on('click', '.buscar-producto', function(e) {
+                e.preventDefault();
+                var productoIndex = $(this).data('producto');
+                var nombre = $('#id_detalles-' + productoIndex + '-nombre').val();
+
+                // Realizar la lógica de búsqueda del producto y obtener el precio unitario
+                // Puedes hacer una solicitud AJAX al servidor para buscar el producto en la base de datos
+
+                console.log("buscar-producto nombre: "+nombre);
+                $.ajax({
+                        url: '/buscar_producto/',
+                        method: 'POST',
+                        data: {
+                        'nombre': nombre,
+                        'csrfmiddlewaretoken' : '{{ csrf_token }}',
+                        },
+                        success: function(response) {
+                           if (response.precio) {
+                                console.log(response);
+                                $('#id_detalles-' + productoIndex + '-precio').val(response.precio);
+                                $('#id_stock-' + productoIndex).text(response.stock);
+                            } else {
+                                alert('Producto no encontrado');
+                            }
+                         },
+                        error: function() {
+                    alert('Error en la consulta del producto');
+                }
+            });
+
+            });
+        });
+    </script>
+
+    <form action="" method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        <div>
+            {{ form.numero_factura.label }} {{ form.numero_factura }}
+            {% for error in form.numero_factura.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.cliente.label }} {{ form.cliente }}
+
+        </div>
+        <hr>
+    <input type="hidden" name="form-TOTAL_FORMS" value="1" id="id_form-TOTAL_FORMS">
+    <input type="hidden" name="form-INITIAL_FORMS" value="0" id="id_form-INITIAL_FORMS">
+    <h3>Detalles de Productos</h3>
+
+    <div id="id_detalles">
+        <h3>Producto 1</h3>
+        <div class="formset_row producto">
+            <p>
+                <label for="id_detalles-0-nombre">Nombre Producto:</label>
+                <input type="text" name="form-0-nombre" id="id_detalles-0-nombre" required>
+                <button class="buscar-producto" data-producto="0">Buscar</button>
+            </p>
+
+            <p>
+                <label for="id_detalles-0-precio">Precio:</label>
+                <input type="number" name="form-0-precio" id="id_detalles-0-precio" step="any" required>
+            </p>
+            <p>
+                <label for="id_stock-0">Stock Disponible: <span id ="id_stock-0"></span></label>
+            </p>
+            <p>
+                <label for="id_detalles-0-cantProducto">Cantidad de Productos:</label>
+                <input type="number" name="form-0-cantProducto" id="id_detalles-0-cantProducto" required>
+            </p>
+        </div>
+
+    </div>
+
+    <button type="button" id="add_detalle">Agregar Producto</button>
+
+    <script>
+        document.getElementById("add_detalle").addEventListener("click", function() {
+            var formset = document.getElementById("id_detalles");
+            var totalFormsInput = document.getElementById("id_form-TOTAL_FORMS");
+            var formCount = parseInt(totalFormsInput.value);
+
+            var row = document.createElement("div");
+            row.classList.add("formset_row");
+
+            var html = `
+            <div class="producto">
+               <h3>Producto ${formCount+1}</h3>
+
+                <p>
+                    <label for="id_detalles-${formCount}-nombre">Nombre Producto:</label>
+                    <input type="text" name="form-${formCount}-nombre" id="id_detalles-${formCount}-nombre" required>
+                    <button class="buscar-producto" data-producto="${formCount}">Buscar</button>
+                </p>
+                <p>
+                    <label for="id_detalles-${formCount}-precio">Precio:</label>
+                    <input type="number" name="form-${formCount}-precio" id="id_detalles-${formCount}-precio" step="any" required>
+                </p>
+                <p>
+                    <label for="id_stock-${formCount}">Stock Disponible: <span id ="id_stock-${formCount}"></span></label>
+                </p>
+                <p>
+                    <label for="id_detalles-${formCount}-cantProducto">cantProducto:</label>
+                    <input type="number" name="form-${formCount}-cantProducto" id="id_detalles-${formCount}-cantProducto" required>
+                </p>
+                </div>
+            `;
+
+            row.innerHTML = html;
+            formset.appendChild(row);
+
+            formCount++;
+            totalFormsInput.value = formCount.toString();
+        });
+    </script>
+
+        <hr>
+
+        <div>
+	        <button type="submit" id="submit">Crear Factura</button>
+        </div>
+
+    </form>
+
+
+{% endblock %}

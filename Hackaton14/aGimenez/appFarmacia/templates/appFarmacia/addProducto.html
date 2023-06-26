@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<form class="form" method="post">
+	{% csrf_token %}
+ 			{{ form.nombre.label }} {{ form.nombre }}<br>
+            {{ form.descripcion.label }} {{ form.descripcion }}<br>
+            {{ form.laboratorio.label }} {{ form.laboratorio }}<br>
+            {{ form.stock.label }} {{ form.stock }}<br>
+            {{ form.precio.label }} {{ form.precio }}<br>
+	<button type="submit" id="submit">Crear Producto</button>
+</form>
+
+
+{% endblock %}

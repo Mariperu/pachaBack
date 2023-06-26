@@ -1,0 +1,51 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+{% if form.nombre.data %}
+{{ form.nombre.data }}
+{% else %}
+Nueva entrada
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<h3>Registro alumno</h3>
+<br><br><br>
+<div class="d-flex justify-content-center">
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            <label for="" class="col-sm-2 col-form-label">{{ form.nombre.label }}</label>
+            {{ form.nombre(size=128) }}<br>
+            {% for error in form.nombre.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="" class="col-sm-2 col-form-label">{{ form.identificador.label }}</label>
+            {{ form.identificador(size=128) }}<br>
+            {% for error in form.identificador.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="" class="col-sm-2 col-form-label">{{ form.edad.label }}</label>
+            {{ form.edad(size=128) }}<br>
+            {% for error in form.edad.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="" class="col-sm-2 col-form-label">{{ form.correo.label }}</label>
+            {{ form.correo(size=128) }}<br>
+            {% for error in form.correo.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            {{ form.submit() }}
+        </div>
+    </form>
+</div>
+{% endblock %}
